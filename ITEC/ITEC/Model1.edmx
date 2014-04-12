@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ITECModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ITECModelStoreContainer">
+          <EntitySet Name="categories" EntityType="ITECModel.Store.categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="groups" EntityType="ITECModel.Store.groups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="items" EntityType="ITECModel.Store.items" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="requests" EntityType="ITECModel.Store.requests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user_groups" EntityType="ITECModel.Store.user_groups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="ITECModel.Store.users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__items__cat_id__282DF8C2" Association="ITECModel.Store.FK__items__cat_id__282DF8C2">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="items" EntitySet="items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__requests__gr_id__2DE6D218" Association="ITECModel.Store.FK__requests__gr_id__2DE6D218">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="requests" EntitySet="requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__requests__usr_id__2CF2ADDF" Association="ITECModel.Store.FK__requests__usr_id__2CF2ADDF">
+            <End Role="users" EntitySet="users" />
+            <End Role="requests" EntitySet="requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_grou__gr_id__30C33EC3" Association="ITECModel.Store.FK__user_grou__gr_id__30C33EC3">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="user_groups" EntitySet="user_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_grou__usr_i__31B762FC" Association="ITECModel.Store.FK__user_grou__usr_i__31B762FC">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_groups" EntitySet="user_groups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="gr_id" />
+          </Key>
+          <Property Name="gr_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="descr" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="items">
+          <Key>
+            <PropertyRef Name="item_id" />
+          </Key>
+          <Property Name="item_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="cat_id" Type="int" />
+          <Property Name="price" Type="decimal" />
+          <Property Name="points" Type="int" />
+        </EntityType>
+        <EntityType Name="requests">
+          <Key>
+            <PropertyRef Name="usr_id" />
+            <PropertyRef Name="gr_id" />
+          </Key>
+          <Property Name="usr_id" Type="int" Nullable="false" />
+          <Property Name="gr_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_groups">
+          <Key>
+            <PropertyRef Name="gr_id" />
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Name="gr_id" Type="int" Nullable="false" />
+          <Property Name="usr_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Name="usr_id" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="pass" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="reg_data" Type="date" />
+          <Property Name="welcome_msg" Type="nvarchar" MaxLength="50" />
+          <Property Name="no_points" Type="int" />
+          <Property Name="type" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__items__cat_id__282DF8C2">
+          <End Role="categories" Type="ITECModel.Store.categories" Multiplicity="0..1" />
+          <End Role="items" Type="ITECModel.Store.items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="items">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__requests__gr_id__2DE6D218">
+          <End Role="groups" Type="ITECModel.Store.groups" Multiplicity="1" />
+          <End Role="requests" Type="ITECModel.Store.requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="gr_id" />
+            </Principal>
+            <Dependent Role="requests">
+              <PropertyRef Name="gr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__requests__usr_id__2CF2ADDF">
+          <End Role="users" Type="ITECModel.Store.users" Multiplicity="1" />
+          <End Role="requests" Type="ITECModel.Store.requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="requests">
+              <PropertyRef Name="usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_grou__gr_id__30C33EC3">
+          <End Role="groups" Type="ITECModel.Store.groups" Multiplicity="1" />
+          <End Role="user_groups" Type="ITECModel.Store.user_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="gr_id" />
+            </Principal>
+            <Dependent Role="user_groups">
+              <PropertyRef Name="gr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_grou__usr_i__31B762FC">
+          <End Role="users" Type="ITECModel.Store.users" Multiplicity="1" />
+          <End Role="user_groups" Type="ITECModel.Store.user_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="user_groups">
+              <PropertyRef Name="usr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITECModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ITECEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="ITECModel.category" />
+          <EntitySet Name="items" EntityType="ITECModel.item" />
+          <AssociationSet Name="FK__items__cat_id__173876EA" Association="ITECModel.FK__items__cat_id__173876EA">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="items" EntitySet="items" />
+          </AssociationSet>
+          <EntitySet Name="groups" EntityType="ITECModel.group" />
+          <EntitySet Name="users" EntityType="ITECModel.user" />
+          <AssociationSet Name="requests" Association="ITECModel.requests">
+            <End Role="group" EntitySet="groups" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="user_groups" Association="ITECModel.user_groups">
+            <End Role="group" EntitySet="groups" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="items" Relationship="ITECModel.FK__items__cat_id__173876EA" FromRole="categories" ToRole="items" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="item_id" />
+          </Key>
+          <Property Name="item_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="cat_id" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="points" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="ITECModel.FK__items__cat_id__173876EA" FromRole="items" ToRole="categories" />
+        </EntityType>
+        <Association Name="FK__items__cat_id__173876EA">
+          <End Role="categories" Type="ITECModel.category" Multiplicity="0..1" />
+          <End Role="items" Type="ITECModel.item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="items">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="gr_id" />
+          </Key>
+          <Property Type="Int32" Name="gr_id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="descr" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="ITECModel.requests" FromRole="group" ToRole="user" />
+          <NavigationProperty Name="users1" Relationship="ITECModel.user_groups" FromRole="group" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Type="Int32" Name="usr_id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="pass" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="reg_data" Precision="0" />
+          <Property Type="String" Name="welcome_msg" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="no_points" />
+          <Property Type="String" Name="type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="groups" Relationship="ITECModel.requests" FromRole="user" ToRole="group" />
+          <NavigationProperty Name="groups1" Relationship="ITECModel.user_groups" FromRole="user" ToRole="group" />
+        </EntityType>
+        <Association Name="requests">
+          <End Type="ITECModel.group" Role="group" Multiplicity="*" />
+          <End Type="ITECModel.user" Role="user" Multiplicity="*" />
+        </Association>
+        <Association Name="user_groups">
+          <End Type="ITECModel.group" Role="group" Multiplicity="*" />
+          <End Type="ITECModel.user" Role="user" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITECModelStoreContainer" CdmEntityContainer="ITECEntities">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="ITECModel.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="items">
+            <EntityTypeMapping TypeName="ITECModel.item">
+              <MappingFragment StoreEntitySet="items">
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="points" ColumnName="points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="ITECModel.group">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="gr_id" ColumnName="gr_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="ITECModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="no_points" ColumnName="no_points" />
+                <ScalarProperty Name="welcome_msg" ColumnName="welcome_msg" />
+                <ScalarProperty Name="reg_data" ColumnName="reg_data" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="requests" TypeName="ITECModel.requests" StoreEntitySet="requests">
+            <EndProperty Name="user">
+              <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+            </EndProperty>
+            <EndProperty Name="group">
+              <ScalarProperty Name="gr_id" ColumnName="gr_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_groups" TypeName="ITECModel.user_groups" StoreEntitySet="user_groups">
+            <EndProperty Name="user">
+              <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+            </EndProperty>
+            <EndProperty Name="group">
+              <ScalarProperty Name="gr_id" ColumnName="gr_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

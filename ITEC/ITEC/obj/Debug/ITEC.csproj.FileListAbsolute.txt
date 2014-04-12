@@ -1,0 +1,16 @@
+E:\workspace\ITEC\ITEC\ITEC\bin\Debug\ITEC.exe.config
+E:\workspace\ITEC\ITEC\ITEC\bin\Debug\ITEC.exe
+E:\workspace\ITEC\ITEC\ITEC\bin\Debug\ITEC.pdb
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.csprojResolveAssemblyReference.cache
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.Properties.Resources.resources
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.csproj.GenerateResource.Cache
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.exe
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.pdb
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.Login.resources
+E:\workspace\ITEC\ITEC\ITEC\bin\Debug\EntityFramework.dll
+E:\workspace\ITEC\ITEC\ITEC\bin\Debug\EntityFramework.xml
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.view.User.resources
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.view.WelcomeMessage.resources
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.view.Administrator.resources
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.view.Groups.resources
+E:\workspace\ITEC\ITEC\ITEC\obj\Debug\ITEC.view.GroupDetails.resources

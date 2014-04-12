@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="28180fe2aeb44ea0b91c5017b72287a9" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="ITECModel.category" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITECModel.item" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="ITECModel.FK__items__cat_id__173876EA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ITECModel.group" Width="1.5" PointX="1.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ITECModel.user" Width="1.5" PointX="4.25" PointY="2" />
+        <AssociationConnector Association="ITECModel.requests" />
+        <AssociationConnector Association="ITECModel.user_groups" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

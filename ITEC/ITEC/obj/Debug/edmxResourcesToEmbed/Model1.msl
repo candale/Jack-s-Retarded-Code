@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ITECModelStoreContainer" CdmEntityContainer="ITECEntities">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="ITECModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="ITECModel.item">
+        <MappingFragment StoreEntitySet="items">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="points" ColumnName="points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="ITECModel.group">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="descr" ColumnName="descr" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="gr_id" ColumnName="gr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="ITECModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="no_points" ColumnName="no_points" />
+          <ScalarProperty Name="welcome_msg" ColumnName="welcome_msg" />
+          <ScalarProperty Name="reg_data" ColumnName="reg_data" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="requests" TypeName="ITECModel.requests" StoreEntitySet="requests">
+      <EndProperty Name="user">
+        <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+      </EndProperty>
+      <EndProperty Name="group">
+        <ScalarProperty Name="gr_id" ColumnName="gr_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="user_groups" TypeName="ITECModel.user_groups" StoreEntitySet="user_groups">
+      <EndProperty Name="user">
+        <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+      </EndProperty>
+      <EndProperty Name="group">
+        <ScalarProperty Name="gr_id" ColumnName="gr_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
